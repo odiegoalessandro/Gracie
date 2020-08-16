@@ -12,20 +12,22 @@
 body{
     width: 100vw;
     height: 100vh;
-    background: #40444b
+    background: #40444b;
+    overflow-x: hidden;
 }
 .text{
     width: 95vw;
-    height: 100vh;
+    height: 70vh;
     display: flex;
     flex-direction: column;
-    margin: 0 10px;
+    margin-left: 10vw;
+    margin-right: 10vw;
 }
 .footer{
     width: 100vw;
     display: flex;
     justify-content: center;
-    background: #202329;
+    background: #202329c2;
     position: fixed;
     align-items: center;
     bottom: 0;
@@ -86,9 +88,22 @@ body{
     width: 220px;
     height: auto;
     display: none;
-    margin: 10px 0;
+    margin: 5px 0;
     padding: 10px;
     font-size: 1.4rem;
+}
+.human{
+    color: #000;
+    font-weight: bold;
+    background: #ffffff;
+    border-radius: 10px;
+    width: 220px;
+    height: auto;
+    display: none;
+    margin: 5px 0;
+    padding: 10px;
+    font-size: 1.4rem;
+    text-align: right;
     text-transform: capitalize;
 }
 .view{

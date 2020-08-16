@@ -1,10 +1,21 @@
-var bot = document.getElementById("bot")
 var human = document.getElementById("human")
 var btn = document.querySelector(".btn")
+var mensageBox = document.getElementById("text")
+
 function say(msg){
-    human.value = ""
+    var bot = document.createElement("p")
+    bot.classList.add("bot")
     bot.classList.add("view")
-    return bot.innerText = msg
+    bot.innerText = msg
+    mensageBox.appendChild(bot)
+}
+
+function sayMsg(msg){
+    var humanMsg = document.createElement("p")
+    humanMsg.classList.add("human")
+    humanMsg.classList.add("view")
+    humanMsg.innerText = msg
+    mensageBox.appendChild(humanMsg)
 }
 
 function time(){
@@ -26,15 +37,24 @@ function time(){
     return compleateDate
 }
 
+var repo = 
+`https://github.com/
+odiegoalessandro/
+gracie_chatbot`
+
 var dialogue = {
-    "oi": [ "oi", "olá" ],
+    "oi": [ "Oi", "Olá" ],
     "oi tudo bem?": ["Oi estou bem"],
-    "tchau": [ "tchau", "adeus" ],
-    "como se chama?": ["Gracie", "me chamo Gracie"],
-    "quem te criou?": ["Eu fui criada por um jovem programador chamado Diego Alessandro da Cruz Martins no dia 8/09/2020"],
-    "o que gosta de fazer?": ["axiliar as pessoas no seu dia a dia"],
-    "o que você sabe fazer?": ["por enquanto não sei muita coisa, mas planejo aprender muito mais sobre vocês para que eu consiga ser a mais eficiente possivel"],
-    "que horas são?": [time()]
+    "tchau": [ "Tchau", "Adeus" ],
+    "!codigo": [repo],
+    "como se chama?": ["Gracie", "Me chamo Gracie"],
+    "quem te criou?": ["Eu fui criada por um jovem programador chamado Diego Alessandro da Cruz Martins no dia 08/08/2020"],
+    "o que gosta de fazer?": ["Axiliar as pessoas no seu dia a dia"],
+    "o que você sabe fazer?": ["Por enquanto não sei muita coisa, mas planejo aprender muito mais sobre vocês para que eu consiga ser a mais eficiente possivel"],
+    "que horas são?": [time()],
+    "gracie":["Oi, tudo bem?", "Oi", "Olá", "Olá tudo bem?"],
+    "oi estou bem e você?": ["estou bem"],
+    "oi não estou bem e você?": ["Eu estou bem que pena que você não esta bem como posso ajuda-lo?"]
 }
 
 function randomSays(start, end){
@@ -43,28 +63,31 @@ function randomSays(start, end){
 
 function receivedMensage(msgHuman){
     if(!msgHuman || msgHuman.length == 0){
-        return "Diga algo";
+        return say("Diga algo")
     }
     msgHuman = msgHuman.trim().toLowerCase();
     for(let text in dialogue){
         if(!dialogue.hasOwnProperty(text)){
-            continue;
+            continue
         }
         if(text == msgHuman){
             var possibleAnswers = dialogue[text]
             var answer = possibleAnswers[randomSays(0, possibleAnswers.length)]
-            say(answer);
-            return;
+            say(answer)
+
+            return
         }
     }
-    say("Não conheço essa palavra");
+    say("Não sei como te responder")
 }
 
 btn.addEventListener("click", () => {
     if(human && human.value && human.value.length > 0){
-        receivedMensage(human.value);
+        sayMsg(human.value)
+        receivedMensage(human.value)
+        human.value = ""
     } 
     else{
-        alert("Digite algo")
+        say("Digite alguma palavra para que possa me comunicar com você")
     }
 })
