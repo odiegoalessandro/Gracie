@@ -10,6 +10,38 @@ function say(msg){
     mensageBox.appendChild(bot)
 }
 
+function theme_dark(){
+    var footer = document.querySelector('footer')
+    var btn = document.getElementById('btn')
+    document.body.style.backgroundColor = "#ffffff"
+    footer.style.backgroundColor = "#202329c2"
+    btn.style.backgroundColor = "#40444b"
+    human.style.backgroundColor = "#40444b"
+}
+
+function theme_light(){
+    var footer = document.querySelector('footer')
+    var btn = document.getElementById('btn')
+    document.body.style.backgroundColor = "#eef4ff"
+    footer.style.backgroundColor = "#dbdbdb"
+    btn.style.backgroundColor = "#e6e6e6"
+    human.style.backgroundColor = "#e6e6e6"
+}
+
+var lang = navigator.language
+var date = new Date()
+var hours = new Date().getHours()
+
+if(hours >= 18 || hours <= 5){
+    theme_dark()
+    console.log("tema escuro")
+}
+
+else{
+    theme_light()
+    console.log("tema claro")
+}
+
 function sayMsg(msg){
     var humanMsg = document.createElement("p")
     humanMsg.classList.add("human")
@@ -44,7 +76,11 @@ gracie_chatbot`
 
 var dialogue = {
     "oi": [ "Oi", "Olá" ],
-    "oi tudo bem?": ["Oi estou bem"],
+    "oi tudo bem?": ["Oi estou bem e você?"],
+    "oi estou bem": ["Ainda bem que você está bem :)"],
+    "oi estou mal": ["Que pena que você está mal :("],
+    "estou bem": ["Ainda bem que você está bem :)"],
+    "estou mal": ["Que pena que você está mal :("],
     "tchau": [ "Tchau", "Adeus" ],
     "!codigo": [repo],
     "como se chama?": ["Gracie", "Me chamo Gracie"],
@@ -52,9 +88,7 @@ var dialogue = {
     "o que gosta de fazer?": ["Axiliar as pessoas no seu dia a dia"],
     "o que você sabe fazer?": ["Por enquanto não sei muita coisa, mas planejo aprender muito mais sobre vocês para que eu consiga ser a mais eficiente possivel"],
     "que horas são?": [time()],
-    "gracie":["Oi, tudo bem?", "Oi", "Olá", "Olá tudo bem?"],
-    "oi estou bem e você?": ["estou bem"],
-    "oi não estou bem e você?": ["Eu estou bem que pena que você não esta bem como posso ajuda-lo?"]
+    "gracie": ["Oi, tudo bem?", "Oi", "Olá", "Olá tudo bem?"]
 }
 
 function randomSays(start, end){
@@ -89,5 +123,21 @@ btn.addEventListener("click", () => {
     } 
     else{
         say("Digite alguma palavra para que possa me comunicar com você")
+    }
+})
+
+human.addEventListener("keypress", (key) => {
+    if(key.which === 13){
+        if(human && human.value && human.value.length > 0){
+            sayMsg(human.value)
+            receivedMensage(human.value)
+            human.value = ""
+        } 
+        else{
+            say("Digite alguma palavra para que possa me comunicar com você")
+        }
+    }
+    else{
+        return
     }
 })
