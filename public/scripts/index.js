@@ -13,7 +13,7 @@ function say(msg){
 function theme_dark(){
     var footer = document.querySelector('footer')
     var btn = document.getElementById('btn')
-    document.body.style.backgroundColor = "#ffffff"
+    document.body.style.backgroundColor = "#40444b"
     footer.style.backgroundColor = "#202329c2"
     btn.style.backgroundColor = "#40444b"
     human.style.backgroundColor = "#40444b"
@@ -60,13 +60,17 @@ function time(){
     var hours = date.getHours(lang)
     var minutes = date.getMinutes(lang)
 
-    var compleateDate =
-    `Ano: ${year}
-    Mês: ${month}
-    Dia do mês: ${mouthday}
-    Dia da semana: ${weekday}
-    Horario: ${hours}:${minutes}`
-    return compleateDate
+    var time =
+    {
+        year,
+        month,
+        mouthday,
+        weekday,
+        hours,
+        minutes,
+        dateComplete: `${weekday} ${mouthday}/${month}/${year} ${hours}:${minutes}`
+    }
+    return time
 }
 
 var repo = 
@@ -87,7 +91,12 @@ var dialogue = {
     "quem te criou?": ["Eu fui criada por um jovem programador chamado Diego Alessandro da Cruz Martins no dia 08/08/2020"],
     "o que gosta de fazer?": ["Axiliar as pessoas no seu dia a dia"],
     "o que você sabe fazer?": ["Por enquanto não sei muita coisa, mas planejo aprender muito mais sobre vocês para que eu consiga ser a mais eficiente possivel"],
-    "que horas são?": [time()],
+    "que horas são?": [`São ${time().hours}:${time().minutes}`],
+    "que dia é hoje": [`Hoje estamos na(o) ${time().weekday} no dia ${time().mouthday}`],
+    "que ano estamos?": [`Estamos em ${time().year}`],
+    "estamos em que mês?": [`Estamos em ${time().month}`],
+    "em que mês estamos?": [`Estamos em ${time().month}`],
+    "mostre a data completa": [`${time().dateComplete}`],
     "gracie": ["Oi, tudo bem?", "Oi", "Olá", "Olá tudo bem?"]
 }
 
