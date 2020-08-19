@@ -15,9 +15,15 @@
     <footer class="footer">
         <div class="menu" id="btn">
             <input type="text" id="human" class="input" id="question" placeholder="Digite sua mensagem aqui" required>
-            <button id="submit" class="btn" type="submit" id="btn"><img src="./public/images/icons/send.svg" alt="Enviar"></button>
+            <button id="submit" class="btn" type="submit" id="btn"><img src="./public/images/icons/send.svg" alt="Enviar" onclick="controller.sendView(event)"></button>
         </div>
     </footer>
-    <script src="./public/scripts/index.js"></script>
+    <script src="./public/scripts/controller/Controller.js"></script>
+    <script src="./public/scripts/model/Model.js"></script>
+    <script src="./public/scripts/view/View.js"></script>
+    <script>
+        let controller = new gracieController()
+        
+    </script>
 </body>
 </html>
