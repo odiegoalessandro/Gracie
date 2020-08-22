@@ -1,36 +1,31 @@
-class gracieView{
+class GracieView{
     constructor(screen){
         this._screen = screen
     }
-    showInScreen(data){
+    createBotMensage(mensage){
+        var botMsg = document.createElement('p')
+        botMsg.innerText = mensage.responce(human)
+        botMsg.classList.add('view')
+        botMsg.classList.add('bot')
 
-        let clientMsg = this.sayMsg()
-        let bot = this.say(data)
-        this._screen.appendChild(clientMsg)
+        return botMsg
+    }
+    createHumanMensage(){
+        var humanMsg = document.createElement('p')
+        humanMsg.innerText = human.value
+        humanMsg.classList.add('view')
+        humanMsg.classList.add('human')
+
+
+        return humanMsg
+    }
+    screen(info){
+        let client = this.createHumanMensage()
+        let bot = this.createBotMensage(info)
+        this._screen.appendChild(client)
         this._screen.appendChild(bot)
     }
-    sayMsg(){
-        if(human.value.length > 0){
-            var mensage = document.createElement('p')
-            mensage.innerText = human.value
-            mensage.classList.add('human')
-            mensage.classList.add('view')
-            human.value = ""
-            return mensage
-        }
-        else{
-            return "digite algo"
-        }
-    }
-    say(text){
-        var mensage = document.createElement('p')
-        mensage.innerText = text
-        mensage.classList.add('bot')
-        mensage.classList.add('view')
-
-        return mensage
-    }
-    update(data, mensage){
-        this.showInScreen(data, mensage)
+    update(data){
+        return this.screen(data)
     }
 }
