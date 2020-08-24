@@ -74,17 +74,14 @@ class GracieModel{
             }
 
             for(var text in msgBot){
-                console.log(text);
-               // console.log(msgBot[text]);
-                console.log(msgHuman);
                 if(!msgBot.hasOwnProperty(text)){
                     continue
                 }
             
                 if(text === msgHuman.value){
                     var possibleAnswers = msgBot[text]
-                    var answer = randomSays(0, msgBot[text].length)
-                    return msgBot[answer]
+                    var answer = randomSays(0, possibleAnswers.length)
+                    return msgBot[text][answer]
                 }
 
                 return "Não conheço essa palavra"
