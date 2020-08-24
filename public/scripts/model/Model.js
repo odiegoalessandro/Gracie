@@ -68,26 +68,25 @@ class GracieModel{
             return Math.floor(Math.random() * (end - start)) + start
         }
 
-        function reciveMensage(msgHuman, memoriBot){
+        function reciveMensage(msgHuman, msgBot){
             if(!msgHuman || msgHuman.value.length == 0){
                 return "Diga algo"
             }
-           
-           //msgHuman = msgHuman.trim().toLowerCase()
-            
-            for(let text in memoriBot){
-            
-                if(!memoriBot.hasOwnProperty(text)){
+
+            for(var text in msgBot){
+                console.log(text);
+               // console.log(msgBot[text]);
+                console.log(msgHuman);
+                if(!msgBot.hasOwnProperty(text)){
                     continue
                 }
             
-                if(text == msgHuman){
-                    var possibleAnswers = memoriBot[text]
-                    var answer = possibleAnswers[randomSays(0, possibleAnswers.length)]
-                    console.log(answer)
-                    
-                    return answer
-                }            
+                if(text === msgHuman.value){
+                    var possibleAnswers = msgBot[text]
+                    var answer = randomSays(0, msgBot[text].length)
+                    return msgBot[answer]
+                }
+
                 return "Não conheço essa palavra"
             }
         }

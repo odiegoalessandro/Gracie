@@ -23,6 +23,16 @@
     <script src="./public/scripts/view/View.js"></script>
     <script>
         let controller = new GracieController()
+        let btn = document.getElementById('btn')
+
+        btn.addEventListener('keypress', (key) => {
+            if(key.which === 13){
+                controller.sendForView(event)
+            }
+            else{
+                return
+            }
+        })
     </script>
 </body>
 </html>
