@@ -24,12 +24,19 @@ class GracieView{
         }
     }
     screen(info){
-        let client = this.createHumanMensage()
-        let bot = this.createBotMensage(info)
-        this._screen.appendChild(client)
-        this._screen.appendChild(bot)
+        if(human.value.length > 0){
+            let client = this.createHumanMensage()
+            let bot = this.createBotMensage(info)
+            this._screen.appendChild(client)
+            this._screen.appendChild(bot)
+    
+            human.value = ""
+        }
+        else{
+            human.value = ""
 
-        human.value = ""
+            alert('Digite algo para que eu possa me comunicar com você')
+        }
     }
     update(data){
         return this.screen(data)
