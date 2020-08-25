@@ -69,7 +69,6 @@ class GracieModel{
             if(!msgHuman || msgHuman.value.length == 0){
                 return "Diga algo"
             }
-
             for(var text in msgBot){
                 if(!msgBot.hasOwnProperty(text)){
                     continue

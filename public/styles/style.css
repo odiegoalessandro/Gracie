@@ -12,9 +12,8 @@
 body{
     width: 100vw;
     height: 100vh;
-    transition: background 1.5s;
     background: #40444b;
-    overflow-x: hidden;
+    overflow: hidden;
 }
 .text{
     width: 95vw;
@@ -26,11 +25,10 @@ body{
     margin-right: 10vw;
 }
 .footer{
-    width: 100vw;
+    width: 100%;
     display: flex;
     justify-content: center;
     background: #202329c2;
-    transition: background 1.5s;
     position: fixed;
     align-items: center;
     bottom: 0;
@@ -44,17 +42,15 @@ body{
     min-width: 300px;
     position: fixed;
     height: 50px;
-    transition: background 1.5s;
     background: #40444b;
     border: none;
     border-radius: 40px;
 }
 .input{
     width: 100rem;
-    min-width: 5rem;
+    min-width: 10rem;
     height: 100%;
     background: #40444b;
-    transition: background 1.5s;
     border-radius: 40px 0 0 40px;
     border: none;
     padding: 25px;
@@ -112,4 +108,9 @@ body{
 }
 .view{
     display: flex;
+}
+@media (max-width: 340px){
+    .input{
+        min-width: 2rem;
+    }
 }

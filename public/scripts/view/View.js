@@ -3,25 +3,31 @@ class GracieView{
         this._screen = screen
     }
     createBotMensage(mensage){
-        var botMsg = document.createElement('p')
-        botMsg.innerText = mensage.responce(human)
-        botMsg.classList.add('view')
-        botMsg.classList.add('bot')
-
-        return botMsg
-    }
-    createHumanMensage(){
         if(human.value.length > 0){
-            var humanMsg = document.createElement('p')
-            humanMsg.innerText = human.value
-            humanMsg.classList.add('view')
-            humanMsg.classList.add('human')
-    
-            return humanMsg    
+            var botMsg = document.createElement('p')
+            botMsg.innerText = mensage.responce(human)
+            botMsg.classList.add('view')
+            botMsg.classList.add('bot')
+
+            return botMsg
         }
         else{
-            return
+            var botMsg = document.createElement('p')
+            botMsg.innerText = 'Digite algo para que eu possa me comunicar com você'
+            botMsg.classList.add('view')
+            botMsg.classList.add('bot')
+
+            return botMsg
         }
+    }
+    createHumanMensage(){
+        var humanMsg = document.createElement('p')
+        humanMsg.innerText = human.value
+        humanMsg.classList.add('view')
+        humanMsg.classList.add('human')
+
+        return humanMsg
+
     }
     screen(info){
         if(human.value.length > 0){
@@ -33,9 +39,8 @@ class GracieView{
             human.value = ""
         }
         else{
-            human.value = ""
-
-            alert('Digite algo para que eu possa me comunicar com você')
+            let bot = this.createBotMensage(info)
+            this._screen.appendChild(bot)
         }
     }
     update(data){
