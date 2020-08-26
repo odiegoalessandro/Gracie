@@ -15,7 +15,7 @@
     </main>
     <footer class="footer">
         <div class="menu" id="btn">
-            <input type="text" id="human" class="input" id="question" placeholder="Digite sua mensagem aqui" required>
+            <input type="text" id="human" class="input" id="question" placeholder="Digite sua mensagem aqui">
             <button id="submit" class="btn" type="submit" id="btn"><img src="./public/images/icons/send.svg" alt="Enviar" onclick="controller.sendForView(event)"></button>
         </div>
     </footer>
@@ -33,6 +33,25 @@
             }
             else{
                 return
+            }
+        })
+
+        window.addEventListener('load', () => {
+            let time = new Date().getHours()
+
+            if(time > 5 || time < 18){
+                console.log('tema claro');
+                document.documentElement.style.setProperty('--body-background', '#eef4ff')
+                document.documentElement.style.setProperty('--btn-background', '#e6e6e6')
+                document.documentElement.style.setProperty('--footer-background', '#dbdbdb')
+                document.documentElement.style.setProperty('--input-background', '#e6e6e6')
+            }
+            else{
+                console.log('tema escuro');
+                document.documentElement.style.setProperty('--body-background', '#40444b')
+                document.documentElement.style.setProperty('--btn-background', '#40444b')
+                document.documentElement.style.setProperty('--footer-background', '#202329c2')
+                document.documentElement.style.setProperty('--input-background', '#40444b')
             }
         })
     </script>

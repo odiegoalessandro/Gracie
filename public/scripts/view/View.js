@@ -22,7 +22,7 @@ class GracieView{
     }
     createHumanMensage(){
         var humanMsg = document.createElement('p')
-        humanMsg.innerText = human.value
+        humanMsg.innerHTML = human.value.trim()
         humanMsg.classList.add('view')
         humanMsg.classList.add('human')
 
@@ -30,7 +30,7 @@ class GracieView{
 
     }
     screen(info){
-        if(human.value.length > 0){
+        if(human.value.trim().length > 0){
             let client = this.createHumanMensage()
             let bot = this.createBotMensage(info)
             this._screen.appendChild(client)

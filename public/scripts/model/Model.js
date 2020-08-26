@@ -4,9 +4,15 @@ class GracieModel{
         this._mensageBox = mensageBox
         this._dialogue = {
             "oi": [ "Oi", "Olá" ],
+            "olá": [ "Oi", "Olá" ],
             "oi tudo bem?": ["Oi estou bem e você?"],
             "oi estou bem": ["Ainda bem que você está bem :)"],
             "oi estou mal": ["Que pena que você está mal :("],
+            "olá tudo bem?": ["Oi estou bem e você?"],
+            "oi estou bem e você?": ["que bom que você está bem :) eu tambem estou bem"],
+            "olá estou bem e você?": ["que bom que você está bem :) eu tambem estou bem"],
+            "olá estou bem": ["Ainda bem que você está bem :)"],
+            "olá estou mal": ["Que pena que você está mal :("],
             "estou bem": ["Ainda bem que você está bem :)"],
             "estou mal": ["Que pena que você está mal :("],
             "tchau": [ "Tchau", "Adeus" ],
@@ -29,6 +35,16 @@ class GracieModel{
         }
 
     }
+    get human(){
+        return this._human
+    }
+    get mensageBox(){
+        return this._mensageBox
+    }
+    get dialogue(){
+        return this._dialogue
+    }
+   
     time(){
         var lang = navigator.language
         var date = new Date()
@@ -51,29 +67,25 @@ class GracieModel{
         }
         return schudele
     }
-    get human(){
-        return this._human
-    }
-    get mensageBox(){
-        return this._mensageBox
-    }
-    get dialogue(){
-        return this._dialogue
-    }
     responce(mensage){
         function randomSays(start, end){
             return Math.floor(Math.random() * (end - start)) + start
         }
 
         function reciveMensage(msgHuman, msgBot){
-            if(!msgHuman || msgHuman.value.length == 0){
-                return "Diga algo"
+            
+            let msg = msgHuman.value
+
+            msg = msg.trim().toLowerCase()
+
+            if(!msgHuman || msg.length == 0){
+                return "Digite algo para que eu possa me comunicar com você"
             }
             for(var text in msgBot){
                 if(!msgBot.hasOwnProperty(text)){
                     continue
                 }
-                if(text === msgHuman.value){
+                if(text === msg){
                     var possibleAnswers = msgBot[text]
                     var answer = randomSays(0, possibleAnswers.length)
                     console.log(text);
